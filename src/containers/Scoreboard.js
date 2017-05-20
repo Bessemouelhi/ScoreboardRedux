@@ -1,5 +1,8 @@
 import React from 'react';
 import Stopwatch from '../components/Stopwatch';
+import Counter from '../components/Counter';
+import Stats from '../components/Stats';
+import AddPlayerForm from '../components/AddPlayerForm';
 
 const INITIAL_STATE = {
   players: [
@@ -18,7 +21,7 @@ const INITIAL_STATE = {
   ],
 }
 
-function Stats(props) {
+/*function Stats(props) {
   var totalPlayers = props.players.length;
   var totalPoints = props.players.reduce(function (total, player) {
     return total + player.score;
@@ -34,7 +37,7 @@ function Stats(props) {
 
 Stats.propTypes = {
   players: React.PropTypes.array.isRequired
-}
+}*/
 
 function Header(props) {
   return (
@@ -53,7 +56,7 @@ Header.propTypes = {
   players: React.PropTypes.array.isRequired
 }
 
-function Counter(props) {
+/*function Counter(props) {
   return (
     <div className="row">
       <div className="btn-group btn-group-justified" role="group"
@@ -74,9 +77,7 @@ function Counter(props) {
 Counter.propTypes = {
   score: React.PropTypes.number.isRequired,
   onChange: React.PropTypes.func.isRequired
-}
-
-
+}*/
 
 function Player(props) {
   return (
@@ -103,7 +104,7 @@ Player.propTypes = {
   onRemove: React.PropTypes.func.isRequired,
 }
 
-var AddPlayerForm = React.createClass({
+/*var AddPlayerForm = React.createClass({
   propTypes: {
     onAdd: React.PropTypes.func.isRequired,
   },
@@ -148,7 +149,7 @@ var AddPlayerForm = React.createClass({
       </div>
     );
   }
-})
+})*/
 
 const Scoreboard = React.createClass({
   propTypes: {
