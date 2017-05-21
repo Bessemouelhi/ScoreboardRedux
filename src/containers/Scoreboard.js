@@ -1,45 +1,29 @@
 import React from 'react';
-import Stopwatch from '../components/Stopwatch';
-import Counter from '../components/Counter';
-import Stats from '../components/Stats';
+import Player from '../components/Player';
+import Header from '../components/Header';
 import AddPlayerForm from '../components/AddPlayerForm';
 
 const INITIAL_STATE = {
   players: [
     {
-      name: 'Jim Hoskins',
-      score: 31,
+      id: 1,
+      name: "John Hopkins",
+      score: 54
     },
     {
-      name: 'Andrew Chalkley',
-      score: 20,
+      id: 2,
+      name: "Bruce Smith",
+      score: 59
     },
     {
-      name: 'Alena Holligan',
-      score: 50,
+      id: 3,
+      name: "Linda Afflek",
+      score: 65
     },
   ],
 }
 
-/*function Stats(props) {
-  var totalPlayers = props.players.length;
-  var totalPoints = props.players.reduce(function (total, player) {
-    return total + player.score;
-  }, 0);
-
-  return (
-    <div className="stats col-sm-3">
-      <p className="display text-center">Players : {totalPlayers}</p>
-      <p className="display text-center">Total Points : {totalPoints}</p>
-    </div>
-  )
-}
-
-Stats.propTypes = {
-  players: React.PropTypes.array.isRequired
-}*/
-
-function Header(props) {
+/*function Header(props) {
   return (
     <div className="panel-heading">
       <div className="row">
@@ -54,32 +38,9 @@ function Header(props) {
 Header.propTypes = {
   title: React.PropTypes.string.isRequired,
   players: React.PropTypes.array.isRequired
-}
-
-/*function Counter(props) {
-  return (
-    <div className="row">
-      <div className="btn-group btn-group-justified" role="group"
-        aria-label="Justified button group">
-        <a className="btn btn-danger" role="button" onClick={function () { props.onChange(-1); }} >
-          <span className="display glyphicon glyphicon-minus" aria-hidden="true"></span>
-        </a>
-        <a href="#" className="display btn btn-default" disabled="disabled"
-          role="button">{props.score}</a>
-        <a className="btn btn-success" role="button" onClick={function () { props.onChange(1); }} >
-          <span className="display glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </a>
-      </div>
-    </div>
-  )
-}
-
-Counter.propTypes = {
-  score: React.PropTypes.number.isRequired,
-  onChange: React.PropTypes.func.isRequired
 }*/
 
-function Player(props) {
+/*function Player(props) {
   return (
     <li className="list-group-item">
       <div className="row">
@@ -88,7 +49,7 @@ function Player(props) {
             <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </a>
           {"  "}{props.name}
-        </div> {/*JIM HOSKINS*/}
+        </div>
         <div className="col-xs-4">
           <Counter score={props.score} onChange={props.onScoreChange} />
         </div>
@@ -102,54 +63,7 @@ Player.propTypes = {
   score: React.PropTypes.number.isRequired,
   onScoreChange: React.PropTypes.func.isRequired,
   onRemove: React.PropTypes.func.isRequired,
-}
-
-/*var AddPlayerForm = React.createClass({
-  propTypes: {
-    onAdd: React.PropTypes.func.isRequired,
-  },
-
-  getInitialState: function () {
-    return {
-      name: "",
-    };
-  },
-
-  onNameChange: function (e) {
-    console.log('onNamechange', e.target.value);
-    this.setState({
-      name: e.target.value
-    })
-  },
-
-  onSubmit: function (e) {
-    e.preventDefault();
-    this.props.onAdd(this.state.name)
-    this.setState({
-      name: ""
-    })
-  },
-
-  render: function () {
-    return (
-      <div className="addPlayer">
-        <form role="form" onSubmit={this.onSubmit} >
-          <div className="row">
-            <div className="col-xs-12">
-              <div className="input-group input-group-lg">
-                <input type="text" className="form-control" value={this.state.name} onChange={this.onNameChange}
-                  placeholder="Add a player here" />
-                <div className="input-group-btn">
-                  <button type="submit" className="btn">Add</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    );
-  }
-})*/
+}*/
 
 const Scoreboard = React.createClass({
   propTypes: {
