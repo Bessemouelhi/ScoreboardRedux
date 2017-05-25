@@ -84,7 +84,7 @@ class Scoreboard extends Component {
           <ul className="players list-group">
             {playerComponents}
           </ul>
-          <AddPlayerForm onAdd={this.onPlayerAdd} />
+          <AddPlayerForm addPlayer={addPlayer} />
         </div>
 
       </div>
