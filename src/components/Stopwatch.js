@@ -16,7 +16,7 @@ export default class Stopwatch extends Component {
     }
 
     onTick = () => {
-        console.log('onTick')
+        //console.log('onTick')
         if (this.state.running) {
             var now = Date.now();
             this.setState({

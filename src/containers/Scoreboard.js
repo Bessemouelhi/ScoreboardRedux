@@ -80,7 +80,7 @@ class Scoreboard extends Component {
     return (
       <div className="application">
         <div className="panel panel-primary">
-          <Header title={this.props.title} players={players} />
+          <Header players={players} />
           <ul className="players list-group">
             {playerComponents}
           </ul>
