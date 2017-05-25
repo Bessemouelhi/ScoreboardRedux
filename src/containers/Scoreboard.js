@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as PlayerActionCreators from '../actions/player';
 import Player from '../components/Player';
 import Header from '../components/Header';
 import AddPlayerForm from '../components/AddPlayerForm';
 
-export default class Scoreboard extends Component {
+class Scoreboard extends Component {
 
   state = {
     players: [
@@ -25,7 +28,7 @@ export default class Scoreboard extends Component {
     ],
   };
 
-  getDefaultProps() {
+  /*getDefaultProps() {
     return {
       title: 'Scoreboard'
     };
@@ -51,21 +54,35 @@ export default class Scoreboard extends Component {
     console.log('onRemovePlayer', index);
     this.state.players.splice(index, 1);
     this.setState(this.state);
-  };
+  };*/
+
+  static PropTypes = {
+    players: PropTypes.array.isRequired
+  }
 
   render() {
+    const {dispatch, players} = this.props;
+    const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispatch);
+    const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
+    const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
+
+    const playerComponents = players.map((player, index) => (
+      <Player
+        index={index}
+        name={player.name}
+        score={player.score}
+        key={player.id}
+        updatePlayerScore={updatePlayerScore}
+        removePlayer={removePlayer}
+      />
+    ));
+
     return (
       <div className="application">
         <div className="panel panel-primary">
-          <Header title={this.props.title} players={this.state.players} />
+          <Header title={this.props.title} players={players} />
           <ul className="players list-group">
-            {this.state.players.map(function (player, index) {
-              return (
-                <Player onScoreChange={function (delta) { this.onScoreChange(index, delta) }.bind(this)}
-                  onRemove={function () { this.onRemovePlayer(index) }.bind(this)}
-                  name={player.name} score={player.score} key={player.id} />
-              );
-            }.bind(this))}
+            {playerComponents}
           </ul>
           <AddPlayerForm onAdd={this.onPlayerAdd} />
         </div>
@@ -74,3 +91,11 @@ export default class Scoreboard extends Component {
     )
   };
 }
+
+const mapStateToProps = state => (
+  {
+    players: state
+  }
+);
+
+export default connect(mapStateToProps)(Scoreboard);
